@@ -1,0 +1,13 @@
+# IDEA files
+.vscode
+.idea
+
+# Venv
+.venv
+
+# Config file
+config.toml
+
+# Cache files
+*.pyc
+__pycache__/
