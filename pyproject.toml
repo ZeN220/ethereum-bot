@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "ethereum-bot"
+version = "0.1.0"
+description = ""
+authors = ["ZeN220 <artaganmalsagov07@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+aiogram = "3.0.0b6"
+sqlalchemy = "^1.4.46"
+aiosqlite = "^0.18.0"
+web3 = "^5.31.3"
+mnemonic = "^0.20"
+toml = "^0.10.2"
+
+
+[tool.poetry.group.dev.dependencies]
+pre-commit = "^3.0.0"
+black = "^22.12.0"
+flake8 = "^6.0.0"
+isort = "^5.11.4"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
