@@ -14,7 +14,7 @@ class UserUseCase(ABC):
         ...
 
 
-class GetUserUseCase(UserUseCase):
+class GetUser(UserUseCase):
     async def __call__(self, user_id: int) -> Optional[User]:
         result = await self.repo.get_by_id(user_id)
         return result
