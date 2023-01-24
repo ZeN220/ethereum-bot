@@ -4,3 +4,7 @@ admin_id = 1
 
 [database]
 dns = 'sqlite+aiosqlite:///database.db'
+
+[logging]
+level = 20
+format = '[%(levelname)s] %(asctime)s - %(name)s - %(message)s'

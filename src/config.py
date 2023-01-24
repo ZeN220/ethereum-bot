@@ -15,9 +15,16 @@ class Database:
 
 
 @dataclass
+class Logging:
+    level: int
+    format: str
+
+
+@dataclass
 class Config:
     telegram: Telegram
     database: Database
+    logging: Logging
 
     @classmethod
     def from_file(cls, path: str):
@@ -25,4 +32,5 @@ class Config:
         return cls(
             telegram=Telegram(**raw_config["telegram"]),
             database=Database(**raw_config["database"]),
+            logging=Logging(**raw_config["logging"]),
         )
