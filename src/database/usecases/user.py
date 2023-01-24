@@ -18,3 +18,11 @@ class GetUser(UserUseCase):
     async def __call__(self, user_id: int) -> Optional[User]:
         result = await self.repo.get_by_id(user_id)
         return result
+
+
+class CreateUser(UserUseCase):
+    async def __call__(self, user_id: int) -> User:
+        user = User(id=user_id)
+        await self.repo.create(user)
+        await self.repo.commit()
+        return user

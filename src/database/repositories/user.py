@@ -12,3 +12,8 @@ class UserRepository(BaseRepository):
         statement = select(User).where(User.id == user_id)
         result = await self.session.execute(statement)
         return result.scalar()
+
+    async def create(self, user: User) -> User:
+        self.session.add(user)
+        await self.session.flush()
+        return user
