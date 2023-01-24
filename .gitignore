@@ -11,3 +11,6 @@ config.toml
 # Cache files
 *.pyc
 __pycache__/
+
+# Database files
+*.db
