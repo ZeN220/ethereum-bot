@@ -10,8 +10,14 @@ class Telegram:
 
 
 @dataclass
+class Database:
+    dns: str
+
+
+@dataclass
 class Config:
     telegram: Telegram
+    database: Database
 
     @classmethod
     def from_file(cls, path: str):
