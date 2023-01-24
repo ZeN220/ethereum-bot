@@ -22,7 +22,7 @@ flake8 = "^6.0.0"
 isort = "^5.11.4"
 
 [tool.black]
-line-length = 80
+line-length = 79
 
 [build-system]
 requires = ["poetry-core"]
