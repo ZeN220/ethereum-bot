@@ -24,4 +24,5 @@ class Config:
         raw_config = toml.load(path)
         return cls(
             telegram=Telegram(**raw_config["telegram"]),
+            database=Database(**raw_config["database"]),
         )
