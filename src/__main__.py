@@ -18,7 +18,12 @@ async def main():
     )
 
     engine = create_async_engine(config.database.dns)
-    session_maker = sessionmaker(bind=engine, class_=AsyncSession, future=True)
+    session_maker = sessionmaker(
+        bind=engine,
+        class_=AsyncSession,
+        future=True,
+        expire_on_commit=False,
+    )
 
     ethereum = Etherscan(config.etherscan.api_key)
 
