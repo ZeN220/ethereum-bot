@@ -4,7 +4,7 @@ from aiogram import BaseMiddleware
 from aiogram.types import Update
 from sqlalchemy.orm import sessionmaker
 
-from src.database import UserService
+from src.database import LineService, UserService
 
 
 class DatabaseMiddleware(BaseMiddleware):
@@ -19,4 +19,5 @@ class DatabaseMiddleware(BaseMiddleware):
     ):
         async with self.session_maker() as session:
             data["user_service"] = UserService(session)
+            data["line_service"] = LineService(session)
             return await handler(event, data)
