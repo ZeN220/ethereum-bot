@@ -4,6 +4,8 @@ from aiogram.types import CallbackQuery
 
 from src.database import UserService
 
+from .start import send_start_message
+
 rules_router = Router()
 
 
@@ -12,3 +14,4 @@ async def accept_rules(query: CallbackQuery, user_service: UserService):
     await user_service.create(query.from_user.id)
     await query.answer("Thanks!")
     await query.message.delete()
+    await send_start_message(query.message)
