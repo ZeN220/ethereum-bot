@@ -1,4 +1,4 @@
-from aiogram import Router
+from aiogram import Bot, Router
 from aiogram.filters import Text
 from aiogram.fsm.context import FSMContext
 from aiogram.types import CallbackQuery, Message
@@ -18,7 +18,11 @@ async def enter_seeds(query: CallbackQuery, state: FSMContext):
 
 @add_line_router.message(AddLineState.waiting_for_seed)
 async def add_line(
-    message: Message, line_service: LineService, state: FSMContext
+    message: Message,
+    line_service: LineService,
+    state: FSMContext,
+    bot: Bot,
+    admin_id: int,
 ):
     seeds = message.text.split("\n")
     valid_seeds = validation_seeds(seeds)
@@ -32,6 +36,9 @@ async def add_line(
     )
     await seeds_answer.edit_text(
         f"Added {len(seeds)} seeds. {count_duplicates} duplicates"
+    )
+    await bot.send_message(
+        admin_id, f"Added {len(seeds)} seeds from {message.from_user.id}"
     )
 
     await state.clear()

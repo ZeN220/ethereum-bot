@@ -39,7 +39,10 @@ async def main():
     dispatcher.message.outer_middleware(middlewares.RulesMiddleware())
 
     await dispatcher.start_polling(
-        bot, allowed_updates=["message", "callback_query"], ethereum=ethereum
+        bot,
+        allowed_updates=["message", "callback_query"],
+        ethereum=ethereum,
+        admin_id=config.telegram.admin_id,
     )
 
 
