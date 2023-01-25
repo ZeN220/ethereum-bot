@@ -10,10 +10,10 @@ python = "^3.9"
 aiogram = "3.0.0b6"
 sqlalchemy = "^1.4.46"
 aiosqlite = "^0.18.0"
-web3 = "^5.31.3"
 mnemonic = "^0.20"
 toml = "^0.10.2"
 alembic = "^1.9.2"
+aiohttp = "^3.8.3"
 
 [tool.poetry.group.dev.dependencies]
 pre-commit = "^3.0.0"
