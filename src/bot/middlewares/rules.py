@@ -21,5 +21,4 @@ class RulesMiddleware(BaseMiddleware):
                 "It's rules!", reply_markup=get_rules_keyboard()
             )
             return
-        data["user"] = user
         return await handler(event, data)
