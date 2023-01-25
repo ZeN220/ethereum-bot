@@ -19,7 +19,10 @@ class Etherscan:
         }
         async with self.session.get(url, params=params) as response:
             data = await response.json()
-            return int(data["result"])
+            result = data["result"]
+            if result == "Error! Invalid address format":
+                raise TypeError("Invalid address format")
+            return int(result)
 
     async def get_balance(self, address: str) -> int:
         balance_as_wei = await self._get_balance(address)

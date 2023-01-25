@@ -19,6 +19,10 @@ async def enter_address(query: CallbackQuery, state: FSMContext):
 async def check_balance(
     message: Message, state: FSMContext, ethereum: Etherscan
 ):
-    balance = await ethereum.get_balance(message.text)
-    await message.answer(f"Balance: {balance} ETH")
+    try:
+        balance = await ethereum.get_balance(message.text)
+    except TypeError:
+        await message.answer("Invalid address")
+    else:
+        await message.answer(f"Balance: {balance} ETH")
     await state.clear()
