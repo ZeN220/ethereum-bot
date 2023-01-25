@@ -10,6 +10,11 @@ class Telegram:
 
 
 @dataclass
+class Etherscan:
+    api_key: str
+
+
+@dataclass
 class Database:
     dns: str
 
@@ -23,6 +28,7 @@ class Logging:
 @dataclass
 class Config:
     telegram: Telegram
+    etherscan: Etherscan
     database: Database
     logging: Logging
 
@@ -31,6 +37,7 @@ class Config:
         raw_config = toml.load(path)
         return cls(
             telegram=Telegram(**raw_config["telegram"]),
+            etherscan=Etherscan(**raw_config["etherscan"]),
             database=Database(**raw_config["database"]),
             logging=Logging(**raw_config["logging"]),
         )

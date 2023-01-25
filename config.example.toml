@@ -2,6 +2,9 @@
 bot_token = '1234567890:ABCDEF1234567890ABCDEF1234567890ABC'
 admin_id = 1
 
+[etherscan]
+api_key = '1234567890ABCDEF1234567890ABCDEF'
+
 [database]
 dns = 'sqlite+aiosqlite:///database.db'
 

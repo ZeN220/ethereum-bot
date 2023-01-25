@@ -8,6 +8,7 @@ from sqlalchemy.orm import sessionmaker
 from src.bot.handlers import setup_routers
 from src.bot.middlewares import DatabaseMiddleware, RulesMiddleware
 from src.config import Config
+from src.infrastructure.ethereum import Etherscan
 
 
 async def main():
@@ -19,6 +20,8 @@ async def main():
     engine = create_async_engine(config.database.dns)
     session_maker = sessionmaker(bind=engine, class_=AsyncSession, future=True)
 
+    ethereum = Etherscan(config.etherscan.api_key)
+
     bot = Bot(token=config.telegram.bot_token)
     dispatcher = Dispatcher()
 
@@ -28,7 +31,7 @@ async def main():
     dispatcher.message.outer_middleware(RulesMiddleware())
 
     await dispatcher.start_polling(
-        bot, allowed_updates=["message", "callback_query"]
+        bot, allowed_updates=["message", "callback_query"], ethereum=ethereum
     )
 
 
